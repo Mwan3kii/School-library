@@ -39,16 +39,4 @@ class Person {
 
 }
 
-
-
-let x = new Person(20);
-
-
-
-
-
-
-
-
-
-
+export default Person;
