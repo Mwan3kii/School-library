@@ -48,11 +48,11 @@ class Person extends Nameable {
 
 }
 
-const person = new Person(22, 'maximilianus')
-person.correctName;
-const capitalized_person = new CapitalizeDecorator(person);
-console.log(capitalized_person.correctName);
-const capitalized_trimmed_person = new TrimmerDecorator(capitalized_person);
-console.log(capitalized_trimmed_person.correctName);
+const person = new Person(22, 'maximilianus');
+console.log(person.correctName());  // Output: maximilianus
+const capitalizedPerson = new CapitalizeDecorator(person);
+console.log(capitalizedPerson.correctName());  // Output: MAXIMILIANUS
+const capitalizedTrimmedPerson = new TrimmerDecorator(capitalizedPerson);
+console.log(capitalizedTrimmedPerson.correctName());  // Output: MAXIMILIA
 
 module.exports = Person;
