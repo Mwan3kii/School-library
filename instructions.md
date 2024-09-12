@@ -1,14 +1,13 @@
-# OOP school library: add Person, Student and Teacher classes
+# OOP school library: decorate a class
 
 ## Learning objectives
-- Implement classes and objects in Ruby.
-- Implement encapsulation and inheritance with Ruby.
+- Implement composition (as an example of the design pattern).
 - Run a program using the command line.
 
 ### Estimated time: 2h
 
 ## Description
-In this project, you will start building your school library app. In this initial step, you will implement the classes to represent students and teachers.
+In this project, you will use the Decorator design pattern to correct the names of people.
 
 *IMPORTANT NOTE: Read **all** requirements before you start building your project.*
 
@@ -22,26 +21,50 @@ In this project, you will start building your school library app. In this initia
 - Follow our list of [best practices for Ruby](https://github.com/microverseinc/curriculum-ruby/blob/main/articles/ruby_best_practices.md).
 
 ### Project requirements
-- Create class `Person` with  the following:
-  - Instance vars: `@id`, `@name`, and `@age`.
-  - Constructor with `name`,  `age`, and `parent_permission` as parameter. `name` and `parent_permission` are optional and have default values of `"Unknown"` and `true`.
-  - Getters for `@id`, `@name`, and `@age`.
-  - Setters for `@name` and `@age`.
-  - Private method `of_age?` that returns `true` if `@age` is greater or equal to 18 and `false` otherwise.
-  - Public method `can_use_services?` that returns `true` if person is of age or if they have permission from parents.
-- Create class `Student` with the following:
-  - Inherits from `Person`.
-  - Constructor extends parent's constructor by adding `@classroom` and a parameter for it.
-  - Method `play_hooky` that returns `"¯\(ツ)/¯"`.
-- Create class `Teacher` with the following:
-  - Inherits from `Person`.
-  - Constructor extends parent's constructor by adding `@specialization` and a parameter for it.
-  - Override `can_use_services?` so it always returns `true`.
-- Each class should be saved in a separate file.
+- Check the usage of [Decorator pattern in Ruby](https://refactoring.guru/design-patterns/decorator/ruby/example#example-0)
+- Think about how you can use two decorators in order to capitalize and trim people's names.
+- In the following steps you will get instructions for implementing the Decorator design pattern for this case.
+
+
+#### Interface
+- Create a class `Nameable`.
+   - Implement a method called `correct_name` that will raise a `NotImplementedError`.
+
+#### Turn your Person class to Nameable
+- Make sure that your Person class inherits from Nameable
+- Make sure that this class has a method `correct_name` implemented. It should simply return the name attribute.
+
+
+#### Prepare base Decorator
+- Make sure that it inherits from Nameable.
+- In the constructor assign a nameable object from params to an instance variable.
+- Implement the `correct_name` method that returns the result of the correct_name method of the `@nameable`.
+
+
+#### Prepare CapitalizeDecorator and TrimmerDecorator
+- For the CapitalizeDecorator:
+    - Create a class that inherits from the base Decorator class.
+    - Implement a method `correct_name` that capitalizes the output of `@nameable.correct_name`.
+- For the TrimmerDecorator:
+    - Create a class that inherits from the base Decorator class.
+    - Implement a method `correct_name` that makes sure that the output of `@nameable.correct_name` has a maximum of 10 characters. If it's longer it should trim the word.
+
+### See your decorators in action
+Try the following code and check if you managed to decorate your person:
+
+```ruby
+person = Person.new(22, 'maximilianus')
+person.correct_name
+capitalized_person = CapitalizeDecorator.new(person)
+puts capitalized_person.correct_name
+capitalized_trimmed_person = TrimmerDecorator.new(capitalized_person)
+puts capitalized_trimmed_person.correct_name
+```
 
 ### Need a big picture?
 
 Remind me about [the big picture of this project](./sneak_peek.md).
+
 
 ## Work and submission mode
 
