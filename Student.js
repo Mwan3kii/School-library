@@ -1,4 +1,4 @@
-import Person from "./Person";
+const Person = require("./Person");
 
 class Student extends Person {
     constructor (name, age, parent_permission, classRoom) {
