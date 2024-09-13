@@ -1,15 +1,20 @@
-const Nameable = require("./Nameable");
-const CapitalizeDecorator = require("./CapitalizeDecorator");
-const TrimmerDecorator = require("./TrimmerDecorator");
+const Nameable = require("../Utils/Nameable");
+const CapitalizeDecorator = require("../Utils/CapitalizeDecorator");
+const TrimmerDecorator = require("../Utils/TrimmerDecorator");
 
 class Person extends Nameable {
     constructor (age, name='unknown', parent_permission=true) {
         // Instance variables 
-        super()
+        super();
         this.id = Math.floor(Math.random() * 1000) + 1,
         this.name = name;
         this.age = age; 
-        this.parent_permission = parent_permission
+        this.parent_permission = parent_permission;
+        this.rentals = [];
+    }
+
+    rentBook(date, book) {
+        return new Rental(this, date, book);
     }
 
     get getId(){

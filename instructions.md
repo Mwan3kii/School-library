@@ -1,13 +1,13 @@
-# OOP school library: decorate a class
+# OOP school library: set up associations
 
 ## Learning objectives
-- Implement composition (as an example of the design pattern).
 - Run a program using the command line.
+- Set up associations between classes and objects.
 
-### Estimated time: 2h
+### Estimated time: 3.5h
 
 ## Description
-In this project, you will use the Decorator design pattern to correct the names of people.
+In this project, we are going to finish creating the remaining classes for our school library and create the associations between them.
 
 *IMPORTANT NOTE: Read **all** requirements before you start building your project.*
 
@@ -21,50 +21,30 @@ In this project, you will use the Decorator design pattern to correct the names 
 - Follow our list of [best practices for Ruby](https://github.com/microverseinc/curriculum-ruby/blob/main/articles/ruby_best_practices.md).
 
 ### Project requirements
-- Check the usage of [Decorator pattern in Ruby](https://refactoring.guru/design-patterns/decorator/ruby/example#example-0)
-- Think about how you can use two decorators in order to capitalize and trim people's names.
-- In the following steps you will get instructions for implementing the Decorator design pattern for this case.
-
-
-#### Interface
-- Create a class `Nameable`.
-   - Implement a method called `correct_name` that will raise a `NotImplementedError`.
-
-#### Turn your Person class to Nameable
-- Make sure that your Person class inherits from Nameable
-- Make sure that this class has a method `correct_name` implemented. It should simply return the name attribute.
-
-
-#### Prepare base Decorator
-- Make sure that it inherits from Nameable.
-- In the constructor assign a nameable object from params to an instance variable.
-- Implement the `correct_name` method that returns the result of the correct_name method of the `@nameable`.
-
-
-#### Prepare CapitalizeDecorator and TrimmerDecorator
-- For the CapitalizeDecorator:
-    - Create a class that inherits from the base Decorator class.
-    - Implement a method `correct_name` that capitalizes the output of `@nameable.correct_name`.
-- For the TrimmerDecorator:
-    - Create a class that inherits from the base Decorator class.
-    - Implement a method `correct_name` that makes sure that the output of `@nameable.correct_name` has a maximum of 10 characters. If it's longer it should trim the word.
-
-### See your decorators in action
-Try the following code and check if you managed to decorate your person:
-
-```ruby
-person = Person.new(22, 'maximilianus')
-person.correct_name
-capitalized_person = CapitalizeDecorator.new(person)
-puts capitalized_person.correct_name
-capitalized_trimmed_person = TrimmerDecorator.new(capitalized_person)
-puts capitalized_trimmed_person.correct_name
-```
+- Create a class `Classroom` with the following:
+  - `@label` instance variable, should be initialized in the constructor.
+  - Setter and getter for `@label` (remember about `attr_accessor`).
+- Create the `has-many`/`belongs-to` relationship between `Classroom` and `Student`. The following should be implemented:
+  - Create the `has-many` side (a classroom has many students).
+  - Create the `belongs-to` side (a student belongs to a classroom).
+  - Make sure that when adding a student to a classroom it also sets the classroom for the student.
+  - Make sure that when setting the classroom for a student it also adds it to the classrooms' students.
+- Create a class `Book` with the following:
+  - `@title` and `@author` instance variables, should be initialized in the constructor.
+  - Setters and getters for instance variables (remember about `attr_accessor`).
+- Create a class `Rental` with the following:
+  - `@date` instance variable, should be initialized in the constructor.
+  - Setter and getter for `@date` (remember about `attr_accessor`).
+- Create the `many-to-many` (also `has-many-through`) relationship between `Person` and `Book` using the intermediate class `Rental`. The following should be implemented:
+  - Create the `has-many` side of `Book` and `Rental` (a book has many rentals).
+  - Create the `belongs-to` side of `Rental` and `Book` (a rental belongs to a book).
+  - Create the `has-many` side of `Person` and `Rental` (a person has many rentals).
+  - Create the `belongs-to` side of `Rental` and `Person` (a rental belongs to a person).
+  - Modify the constructor of `Rental` so `Book` and `Person` are set in it.
 
 ### Need a big picture?
 
 Remind me about [the big picture of this project](./sneak_peek.md).
-
 
 ## Work and submission mode
 
