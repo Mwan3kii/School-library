@@ -1,13 +1,13 @@
-# OOP school library: set up associations
+# OOP school library: add basic UI
 
 ## Learning objectives
+- Build interactive console apps.
 - Run a program using the command line.
-- Set up associations between classes and objects.
 
 ### Estimated time: 3.5h
 
 ## Description
-In this project, we are going to finish creating the remaining classes for our school library and create the associations between them.
+In this project, you will create a form of UI for your school library app. This way it can be invoked as an executable and not something you use in IRB exclusively.
 
 *IMPORTANT NOTE: Read **all** requirements before you start building your project.*
 
@@ -21,26 +21,21 @@ In this project, we are going to finish creating the remaining classes for our s
 - Follow our list of [best practices for Ruby](https://github.com/microverseinc/curriculum-ruby/blob/main/articles/ruby_best_practices.md).
 
 ### Project requirements
-- Create a class `Classroom` with the following:
-  - `@label` instance variable, should be initialized in the constructor.
-  - Setter and getter for `@label` (remember about `attr_accessor`).
-- Create the `has-many`/`belongs-to` relationship between `Classroom` and `Student`. The following should be implemented:
-  - Create the `has-many` side (a classroom has many students).
-  - Create the `belongs-to` side (a student belongs to a classroom).
-  - Make sure that when adding a student to a classroom it also sets the classroom for the student.
-  - Make sure that when setting the classroom for a student it also adds it to the classrooms' students.
-- Create a class `Book` with the following:
-  - `@title` and `@author` instance variables, should be initialized in the constructor.
-  - Setters and getters for instance variables (remember about `attr_accessor`).
-- Create a class `Rental` with the following:
-  - `@date` instance variable, should be initialized in the constructor.
-  - Setter and getter for `@date` (remember about `attr_accessor`).
-- Create the `many-to-many` (also `has-many-through`) relationship between `Person` and `Book` using the intermediate class `Rental`. The following should be implemented:
-  - Create the `has-many` side of `Book` and `Rental` (a book has many rentals).
-  - Create the `belongs-to` side of `Rental` and `Book` (a rental belongs to a book).
-  - Create the `has-many` side of `Person` and `Rental` (a person has many rentals).
-  - Create the `belongs-to` side of `Rental` and `Person` (a rental belongs to a person).
-  - Modify the constructor of `Rental` so `Book` and `Person` are set in it.
+- Watch the video with the UI example again (you have seen it while reading the Sneak Peek).
+    - [![UI example](https://img.youtube.com/vi/vkkgrhD6aXQ/0.jpg)](https://www.youtube.com/watch?v=vkkgrhD6aXQ)
+- Your console app should behave in the same way as it is in the example.
+- Create a `app.rb` file that will serve as your console app entry-point. It should have methods that do the following:
+  - List all books.
+  - List all people.
+  - Create a person (teacher or student, not a plain `Person`).
+  - Create a book.
+  - Create a rental.
+  - List all rentals for a given person id.
+- In your `main.rb` define the entry point, this will be a method called `main` that is invoked at the end of your file. This method should do the following:
+  - Present the user with a list of options to perform.
+  - Lets users choose an option.
+  - If needed, ask for parameters for the option.
+  - Have a way to quit the app.
 
 ### Need a big picture?
 
