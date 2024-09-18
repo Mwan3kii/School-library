@@ -72,8 +72,5 @@ function createBook(app) {
     console.log('Book created successfully!!');
 }
 
-// Create Rental
-// function createRental(app){
-//     const bookIndex = 
-// }
+
 

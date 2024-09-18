@@ -41,7 +41,7 @@ class Person extends Nameable {
     #of_age() {
         return this.age >= 18;
     }
-
+    
     correctName() {
         return this.name
     }
