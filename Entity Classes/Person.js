@@ -14,7 +14,7 @@ class Person extends Nameable {
         this.rentals = [];
     }
 
-    rentBook(date, book) { //Twe {}, 34/6/2012, 23
+    rentBook(date, book) { 
         return new Rental(this, date, book);
     }
 
