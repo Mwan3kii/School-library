@@ -34,7 +34,7 @@ class App {
     }
 
     createRental(date, bookIndex, personIndex) {
-        const rental = new Rental(date, this.books[bookIndex], this.persons[personIndex]);
+        const rental = new Rental(this.books[bookIndex], this.persons[personIndex], date);
         return rental
     }
 

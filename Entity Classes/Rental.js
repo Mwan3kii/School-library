@@ -24,3 +24,5 @@ class Rental {
         this.date = date;
     }
 }
+
+module.exports = Rental;

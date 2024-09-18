@@ -1,4 +1,5 @@
-const Person = require("../Person");
+const Person = require("./Person");
+
 
 class Teacher extends Person {
     constructor (name, age, parent_permission, specialization) {
