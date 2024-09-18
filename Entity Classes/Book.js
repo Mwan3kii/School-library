@@ -1,3 +1,5 @@
+const Rental = require('./Rental')
+
 class Book {
     constructor(title, author) {
         this.title = title;
@@ -32,3 +34,5 @@ class Book {
     }
 
 }
+
+module.exports = Book;

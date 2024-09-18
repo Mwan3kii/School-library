@@ -1,6 +1,7 @@
 const Nameable = require("../Utils/Nameable");
 const CapitalizeDecorator = require("../Utils/CapitalizeDecorator");
 const TrimmerDecorator = require("../Utils/TrimmerDecorator");
+const Rental = require("./Rental");
 
 class Person extends Nameable {
     constructor (age, name='unknown', parent_permission=true) {
@@ -13,11 +14,15 @@ class Person extends Nameable {
         this.rentals = [];
     }
 
-    rentBook(date, book) {
+    rentBook(date, book) { 
         return new Rental(this, date, book);
     }
 
-    get getId(){
+    getRentals() {
+        return this.rentals;
+    }
+
+    getId(){
         return this.id;
     }
 
@@ -41,7 +46,7 @@ class Person extends Nameable {
     #of_age() {
         return this.age >= 18;
     }
-
+    
     correctName() {
         return this.name
     }
